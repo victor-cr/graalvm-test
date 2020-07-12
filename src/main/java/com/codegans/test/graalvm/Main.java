@@ -44,6 +44,10 @@ public class Main {
         return new ProxyFunction();
     }
 
+    public static JsFunction fn(String name) {
+        return new JsFunction(name);
+    }
+
     public static class ProxyNode implements ProxyObject {
         private final ProxyFunction parentFn;
 

@@ -1,4 +1,4 @@
-const proxyFn = Java.type("com.codegans.test.graalvm.Main").function();
+const proxyFn = Java.type("com.codegans.test.graalvm.Main").fn("test");
 
 console.log('------------------------');
 console.log('proxyFn:', proxyFn);
