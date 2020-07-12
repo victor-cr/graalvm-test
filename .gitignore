@@ -1,0 +1,22 @@
+##
+## IntelliJ IDEA descriptors
+##
+.idea/
+*.ipr
+*.iml
+*.iws
+
+##
+## Maven build
+##
+target/
+
+##
+## Java errors
+##
+*.hprof
+
+##
+## Etc
+##
+.bot/
