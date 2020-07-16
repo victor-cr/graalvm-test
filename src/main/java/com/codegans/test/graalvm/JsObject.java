@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,14 @@ public class JsObject implements ProxyObject {
     }
 
     protected JsObject(String constructorName) {
+        this(c -> c.getBindings(JS).getMember(constructorName));
+    }
+
+    protected JsObject(JsFunction constructor) {
+        this(c -> c.asValue(constructor));
+    }
+
+    protected JsObject(Function<Context, Value> constructorFn) {
         Context current = Context.getCurrent();
 
         if (current == null) {
@@ -34,7 +43,7 @@ public class JsObject implements ProxyObject {
         }
 
         this.context = current;
-        this.constructor = current.getBindings(JS).getMember(constructorName);
+        this.constructor = constructorFn.apply(current);
 
         WeakHashMap<String, Object> map = PROTOTYPES.get();
 
