@@ -22,6 +22,7 @@ public class JsFunction extends JsObject implements ProxyExecutable {
 
         internal.put("name", () -> this.name);
         internal.put("length", () -> this.length);
+        internal.put("prototype", () -> this.constructor);
     }
 
     protected JsFunction(String constructorName, String name, int length, ProxyExecutable fn) {

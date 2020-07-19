@@ -45,7 +45,7 @@ public class Main {
     }
 
     public static JsFunction fn(String name) {
-        return new JsFunction(name);
+        return new JsFunction(name, 0, args -> null);
     }
 
     public static class ProxyNode implements ProxyObject {
